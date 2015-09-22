@@ -72,7 +72,72 @@
 	weatherLund.directive("monthView", function() {
 		return {
 			restrict: 'E',
-			templateUrl: "month-view.html"
+			templateUrl: "month-view.html",
+			controller: function ($scope) {
+				$scope.dates = $scope.month.map(function (d) {
+					return d.Date;
+				});
+
+				$scope.rainy_days = $scope.month.map(function (d) {
+					return d.RainDays == "" ? 0 : parseInt(d.RainDays);
+				});
+				$scope.rain = $scope.month.map(function (d) {
+					return d.Rain == "" ? 0 : parseInt(d.Rain);
+				});
+
+				var options = {
+					title: {
+						text: 'Rain and Rain Days per Month'
+					},
+					xAxis: [{
+						categories: $scope.dates,
+					}],
+					yAxis: [
+						{
+							title: {
+								text: 'Rain'
+							},
+							min: 0,
+							labels: {
+								formatter: function () {
+									return this.value + " (mm)";
+								}
+							}
+						},
+						{
+							title: {
+								text: 'Rain Days'
+							},
+							min: 0,
+							opposite: true
+						}
+					],
+					tooltip: {
+						shared: true
+					},
+					series: [
+						{
+							name: 'Rain',
+							data: $scope.rain,
+							yAxis: 0,
+							type: 'spline',
+							tooltip: {
+                valueSuffix: ' mm'
+	            }
+						},
+						{
+							name: 'Rainy Days',
+							data: $scope.rainy_days,
+							yAxis: 1,
+							type: 'column',
+							tooltip: {
+	              valueSuffix: ' day(s)'
+	            }
+						}
+					]
+				};
+				$('#chart').highcharts(options);
+			}
 		};
 	});
 	weatherLund.directive("infoView", function() {
@@ -87,5 +152,5 @@
 			templateUrl: "latest-view.html"
 		};
 	});
-	
+
 })();
