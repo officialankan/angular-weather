@@ -4,12 +4,14 @@
 							<th>Date</th>
 							<th>Temperature</th>
 							<th>Humidity</th>
+							<th>Relative Pressure</th>
 						</thead>
 						<tbody>
 							<tr ng-repeat="data in live | orderBy: 'Date':true ">
 								<td>{{ data.Date | date:"d MMM', 'HH:mm" }}</td>
 								<td>{{ data.TempOut + "&deg;C" }}</td>
 								<td>{{ data.HumidityOut + "%" }}</td>
+								<td>{{ data.rel_pressure_hpa + "hPa" }}</td>
 							</tr>
 						</tbody>
 					</table>
