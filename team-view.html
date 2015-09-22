@@ -1,0 +1,21 @@
+<!-- team info -->
+<h4 class="text-center">Team</h4>
+<div class="container-fluid">
+	<ul class="list-inline caption-style-1">
+		<li ng-repeat="member in members">
+			<img class="img-responsive" ng-src="{{ member.img }}" width="288" height="288"/>
+			<div class="caption">
+				<div class="blur"></div>
+				<div class="caption-text">
+					<h5 class="text-center">{{ member.name }}</h5>
+					<span class="glyphicon glyphicon-briefcase"></span> {{member.title}}
+					<div>
+							<a class="btn btn-default text-center" ng-show="{{member.email.length}}" ng-href="mailto:{{member.email}}" role="button"><span class="glyphicon glyphicon-envelope"></span></a>
+							<a class="btn btn-default text-center" ng-show="{{member.twitter.length}}" ng-href="http://twitter.com/{{member.twitter}}" role="button" target="blank"><i class="fa fa-twitter"></i></a>
+							<a class="btn btn-default text-center" ng-show="{{member.linkedin.length}}" ng-href="{{member.linkedin}}" target="blank"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

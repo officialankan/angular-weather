@@ -1,0 +1,15 @@
+<!-- latest view -->
+					<table class="table table-hover table-responsive">
+						<thead>
+							<th>Date</th>
+							<th>Temperature</th>
+							<th>Humidity</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="data in live | orderBy: 'Date':true ">
+								<td>{{ data.Date | date:"d MMM', 'HH:mm" }}</td>
+								<td>{{ data.TempOut + "&deg;C" }}</td>
+								<td>{{ data.HumidityOut + "%" }}</td>
+							</tr>
+						</tbody>
+					</table>

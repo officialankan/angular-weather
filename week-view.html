@@ -1,0 +1,15 @@
+<!-- latest -->
+<table class="table table-hover">
+	<thead>
+		<th>Date</th>
+		<th>Max Temperature</th>
+		<th>Lowest Temperature</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="data in week | orderBy: 'Date':true ">
+			<td>{{ data.Date | date:"EEE d MMM" }}</td>
+			<td>{{ data.TempMax + "&deg;C" }}</td>
+			<td>{{ data.TempMin + "&deg;C" }}</td>
+		</tr>
+	</tbody>
+</table>
