@@ -21,5 +21,9 @@
 				});
 		};
 		$scope.loadData();
+		$scope.graphView = 0;
+		$scope.setGraph = function(value) {
+			return $scope.graphView = value;
+		};
 	});
 })();
