@@ -16,8 +16,8 @@
 			<h5 class="text-center">Last checked for data at {{ today | date:'HH:mm' }}</h5>
 			<div class="text-center">
 				<button type="submit" class="btn btn-info" ng-click="loadData()"><span class="glyphicon glyphicon-refresh"></span></button>
-				<button type="submit" class="btn btn-info" ng-click="setGraph(0)"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
-				<button type="submit" class="btn btn-info" ng-click="setGraph(1)"><span class="glyphicon glyphicon-stats"></span></button>
+				<button type="submit" class="btn btn-info" ng-click="setGraph(0)" ng-class="{ active: graphView == 0 }"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+				<button type="submit" class="btn btn-info" ng-click="setGraph(1)" ng-class="{ active: graphView == 1 }"><span class="glyphicon glyphicon-stats"></span></button>
 			</div>
 		</div>
 		<div class="container-fluid">
