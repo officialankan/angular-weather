@@ -136,7 +136,7 @@
 						}
 					]
 				};
-				$('#chart').highcharts(options);
+				$('#chart-month-rain').highcharts(options);
 			}
 		};
 	});
@@ -149,7 +149,74 @@
 	weatherLund.directive("latestView", function() {
 		return {
 			restrict: 'E',
-			templateUrl: "latest-view.html"
+			templateUrl: "latest-view.html",
+			controller: function ($scope) {
+				$scope.dates = $scope.live.map(function (d) {
+					return d.Date;
+				});
+
+				$scope.temp_out = $scope.live.map(function (d) {
+					return d.TempOut == "" ? 0 : parseInt(d.TempOut);
+				});
+				$scope.humidity_out = $scope.live.map(function (d) {
+					return d.HumidityOut == "" ? 0 : parseInt(d.HumidityOut);
+				});
+
+				var options = {
+					title: {
+						text: 'Latest Temperature and Humidity Records'
+					},
+					xAxis: [{
+						categories: $scope.dates,
+					}],
+					yAxis: [
+						{
+							title: {
+								text: 'Temperature'
+							},
+							labels: {
+								formatter: function () {
+									return this.value + " (°C)";
+								}
+							},
+							min: -40,
+							max: 40
+						},
+						{
+							title: {
+								text: 'Humidity Out'
+							},
+							min: 0,
+							max: 100,
+							opposite: true
+						}
+					],
+					tooltip: {
+						shared: true
+					},
+					series: [
+						{
+							name: 'Temperature',
+							data: $scope.temp_out,
+							yAxis: 0,
+							type: 'spline',
+							tooltip: {
+                valueSuffix: ' (°C)'
+	            }
+						},
+						{
+							name: 'Humidity Out',
+							data: $scope.humidity_out,
+							yAxis: 1,
+							type: 'spline',
+							tooltip: {
+	              valueSuffix: ' %'
+	            }
+						}
+					]
+				};
+				$('#chart-latest-temp').highcharts(options);
+			}
 		};
 	});
 
