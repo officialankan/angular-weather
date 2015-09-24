@@ -1,5 +1,5 @@
 <!-- latest -->
-<table class="table table-hover">
+<table class="table table-hover" ng-show="graphView == 0">
 	<thead>
 		<th>Date</th>
 		<th>Max Temperature</th>
@@ -13,3 +13,4 @@
 		</tr>
 	</tbody>
 </table>
+<div ng-show="graphView == 1" id="chart-week-temp"></div>

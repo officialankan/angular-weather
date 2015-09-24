@@ -5,6 +5,7 @@
 
 
 	weatherLund.controller('weatherLundController', function($scope, $http) {
+		$scope.graphView = 0;
 		$scope.loadData = function() {	
 			$http.get('data/live.json')
 				.then(function(res) {
@@ -21,7 +22,6 @@
 				});
 		};
 		$scope.loadData();
-		$scope.graphView = 0;
 		$scope.setGraph = function(value) {
 			return $scope.graphView = value;
 		};
