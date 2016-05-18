@@ -6848,5 +6848,10 @@ button.close {
 	text-align: center;
 	top:100px;
 }
-
+#home {
+	background: rgba(255, 255, 255, 0.8);
+	margin: 10px;
+	padding: 10px;
+	border-radius: 2px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

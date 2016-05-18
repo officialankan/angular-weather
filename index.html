@@ -12,12 +12,17 @@
 	</head>
 	<body ng-controller="weatherLundController">
 		<div class="jumbotron">
-			<h3 class="text-center">Retzner Environmental Consulting</h3>
-			<h5 class="text-center">Last checked for data at {{ today | date:'HH:mm' }}</h5>
 			<div class="text-center">
-				<button type="submit" class="btn btn-info" ng-click="loadData()"><span class="glyphicon glyphicon-refresh"></span></button>
-				<button type="submit" class="btn btn-info" ng-click="setGraph(0)" ng-class="{ active: graphView == 0 }"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
-				<button type="submit" class="btn btn-info" ng-click="setGraph(1)" ng-class="{ active: graphView == 1 }"><span class="glyphicon glyphicon-stats"></span></button>
+			</div>
+			<img ng-src="img/logga_transparent.png" class="img-responsive center-block" width="12%" height="12%" />
+			<div ng-show="panel.weather">
+				<h5 class="text-center">Last checked for data at {{ today | date:'HH:mm' }}</h5>
+			</div>
+			<div ng-show="panel.weather" class="text-center">
+				<button class="btn btn-default" type="submit" ng-click="loadData()"><span class="glyphicon glyphicon-refresh"></span></button>
+				<button type="submit" class="btn btn-default" ng-click="setGraph(0)" ng-class="{ active: graphView == 0 }"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+				<button type="submit" class="btn btn-default" ng-click="setGraph(1)" ng-class="{ active: graphView == 1 }"><span class="glyphicon glyphicon-stats"></span></button>
+				<button type="submit" class="btn btn-info" ng-click="panel.selectTab(0); panel.weather = false"><span class="glyphicon glyphicon-home"></span></button>
 			</div>
 		</div>
 		<div class="container-fluid">
@@ -26,7 +31,9 @@
 		
 		<footer>
 			<div class="container">
-				<img ng-src="img/logga.jpg" class="img-responsive center-block" width="10%" height="10%" />
+				<div>
+					<img ng-src="img/logga.jpg" class="img-responsive center-block" width="10%" height="10%" />
+				</div>
 				<p class="text-center">Copyright <span class="glyphicon glyphicon-copyright-mark"></span> Retzner Environmental Consulting 2014-{{ today | date:'yyyy' }}</p>
 			</div>
 		</footer>

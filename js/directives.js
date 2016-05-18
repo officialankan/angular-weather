@@ -1,12 +1,27 @@
 (function() {
 	var weatherLund = angular.module('lund-directives', []);
 	
+	weatherLund.directive('backImg', function(){
+    return function(scope, element, attrs){
+        attrs.$observe('backImg', function(value) {
+            element.css({
+                'background-image': 'url(' + value +')',
+                'background-size' : 'cover',
+				'-webkit-background-size' : 'cover',
+				'-moz-background-size': 'cover',
+				'-o-background-size': 'cover'
+            });
+		});
+	};
+	});
+	
 	weatherLund.directive("navTabs", function() {
 		return {
 			directive: 'E',
 			templateUrl: "nav-tabs.html",
 			controller: function() {
-				this.tab = 1;
+				this.tab = 0;
+				this.weather = false;
 				this.selectTab = function(setTab) {
 					this.tab = setTab;
 				};	
@@ -34,7 +49,7 @@
 				},
 				{
 					name: 'Carl Retzner',
-					title: 'Forward Deployed Engineer',
+					title: 'Forward Deployed Engineer at Burt',
 					img: 'img/carl.jpg',
 					email: 'carl@retzner.se',
 					twitter: 'krettan',
@@ -42,14 +57,14 @@
 				},
 				{
 					name: 'Charlotte Retzner',
-					title: 'Adj. adjunkt',
+					title: 'Founder and consultant at REC / Adj. adjunkt at Lund University',
 					img: 'img/charlotte.jpg',
 					email: 'charlotte@retzner.se',
 					linkedin: 'https://se.linkedin.com/pub/charlotte-retzner/21/abb/353/sv'
 				},
 				{
 					name: 'Lars Thufvesson',
-					title: 'Senior Analyst',
+					title: 'Senior Analyst at Yara International',
 					img: 'img/lars.jpg',
 					email: 'lars.thufvesson@lsn.se',
 					linkedin: 'https://se.linkedin.com/pub/lars-thufvesson/a1/813/3ab/sv'
@@ -195,6 +210,18 @@
 		return {
 			restrict: 'E',
 			templateUrl: "info-view.html"
+		};
+	});
+	weatherLund.directive("mediaView", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "media-view.html"
+		};
+	});
+	weatherLund.directive("indexView", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "index-view.html"
 		};
 	});
 	weatherLund.directive("latestView", function() {
