@@ -1,4 +1,20 @@
 <!-- media view -->
-<div class="container-fluid text-center">
-	<h3>Thufvesson Retzner in the news!</h3>
+<div class="container-fluid">
+<div class="page-header">
+	<h1 class="text-center">Media</h1>
 </div>
+  <div class="container">
+	<ul class="list-unstyled inline">
+			<li ng-repeat="new in news | orderBy: 'date':true ">
+				<div class="col-md-4 text-center">
+					<div>
+						<img ng-src="{{ new.img }}" alt="Texto Alternativo" class="img-circle img-thumbnail">
+						<h3>{{ new.title }}</h3>
+						<a ng-href="{{ new.url }}" class="btn btn-primary" title="Read More" target="_blank">Read More »</a>
+					</div>
+				</div>
+			</li>
+	</ul>
+  </div>
+</div>
+<!-- /container -->

@@ -215,7 +215,29 @@
 	weatherLund.directive("mediaView", function() {
 		return {
 			restrict: 'E',
-			templateUrl: "media-view.html"
+			templateUrl: "media-view.html", 
+			controller: function($scope) {
+				$scope.news = [
+					{
+						title: 'Winner of the Best Student CAS Presentations 2014',
+						date: '2014-08-20',
+						img: 'img/news/carl_1.jpg',
+						url: 'http://studycas.com/component/k2/carl-retzner-game-theory-winner-of-the-best-student-cas-presentations-2014'
+					},
+					{
+						title: 'Charlotte Retzner supervisor of awarded thesis',
+						date: '2013-04-26',
+						img: 'img/news/charlotte_supervisor.jpg',
+						url: 'http://www.mynewsdesk.com/se/sysav/pressreleases/lundastudenter-prisade-paa-sysavdagen-976864'
+					},
+					{
+						title: 'Classifying Large Graphs with Differential Privacy',
+						date: '2015-09-01',
+						img: 'img/news/carl_2.jpg',
+						url: 'http://link.springer.com/chapter/10.1007%2F978-3-319-23240-9_1'
+					}
+					];
+			}
 		};
 	});
 	weatherLund.directive("indexView", function() {
